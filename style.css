@@ -1,0 +1,210 @@
+
+ 
+body{
+  margin: 0;
+ background-color: black;
+  font-family: sans-serif;
+
+  display: flex;
+  justify-content: center;   /* horizontal center */
+}
+.page{
+  display:flex;
+  justify-content:center;
+}
+.container {
+  position: relative;
+  width:100%;
+  max-width: 1024px;
+  margin: auto;
+ 
+}
+
+.background {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.overlay {
+ 
+
+   position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  text-align:center;
+  color:white;
+  width:90%;
+}
+
+/* Responsive text overlays */
+.title    { top:1.7%;  font-size:clamp(8rem,1.5rem,80px); font-weight:bold; }
+.subtitle { top:13%; left: 470px; font-size:clamp(4.5rem,1.6rem,80px); color:orangered; font-weight:bold;}
+.tagline  { top:66%; font-size:clamp(3.1rem, 1.6rem,80px); font-style:italic;}
+.subtag   { top:72%; font-size:clamp(3.1rem,1.6rem,80px); color:#ff6600; font-style:italic;}
+
+
+/* Badge + Features */
+.badge-section {
+  position: absolute;
+  bottom: 5%;
+  left: 0;
+  width: 100%;
+  display: flex;
+   
+  padding: 0 5%;
+}
+ 
+
+ .badge-container{
+  position:absolute;
+  bottom:5%;
+  left:50%;
+  transform:translateX(-50%);
+  width:90%;
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+
+ 
+.features{
+  margin-left: 30px;
+}
+
+.features ul{
+   list-style-type: none !important;
+   padding: 0;
+   margin:0;
+}
+
+.features li{
+  list-style-type: none;
+  
+  font-size:clamp(12px,2.5vw,20px);
+  color:white;
+  padding-left:0px;
+  position:relative;
+}
+
+.features li::before{
+  content: "✔";
+  color: #00ff66;
+  position: relative;
+  left: -40px;
+  top: 0;
+  font-weight: bold;
+
+  
+}
+
+/* animated underline */
+.features li::after{
+  content: "";
+  display: block;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #00ff66, #ff6600);
+  margin-top: 8px;
+  animation: underlineGrow 2s infinite alternate;
+}
+
+@keyframes underlineGrow{
+  from { width: 0; opacity: .6; }
+  to { width: 100%; opacity: .6; }
+}
+/* A4 container */
+ 
+#Download {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: block;
+  margin: 30px auto;   /* centers horizontally */
+}
+
+#Download img {
+  width: 200px;        /* adjust until it matches the orange button size */
+  height: auto;
+}
+
+.download-btn {
+  text-align: center;      /* centers the button */
+  padding: 0 30px ;
+        /* spacing below features */
+  
+}
+
+.download-btn img {
+  width: 200px;            /* adjust until it matches your orange rectangle */
+  height: auto;
+  display: inline-block;
+}
+
+
+
+
+
+
+/* Responsive breakpoints */
+@media (max-width: 600px) {
+ 
+  .title { font-size: 10vw; }
+  .subtitle { font-size: 1.7rem;  left: 170px;}
+  .tagline { font-size: 4.3vw; font-weight: bold; font-style:   italic; }
+  .subtag { font-size: 4vw; font-weight: bold; font-style:   italic ; }
+ 
+  
+    .badge{
+      top: 15px;
+    width: 90px;     /* badge reduces here */
+    height: auto;
+     
+     
+     
+  }
+  
+  .features li { font-size: 3vw;  top: 20px;
+  padding: 1px; }
+
+
+  #Download {
+  position: relative;
+  top: 70%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 10px;
+  font-size: clamp(14px,2.5vw,22px);
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: white;
+  background: linear-gradient(90deg, #ff4800, #ff7b00);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow:
+    0 0 15px rgba(255,72,0,0.6),
+    0 0 35px rgba(0,255,102,0.4);
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+}
+
+/* When printing / saving to PDF */
+@media print{
+  body *{
+    visibility: hidden;
+  }
+
+  #pdf-content, #pdf-content *{
+    visibility: visible;
+  }
+
+  #pdf-content{
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}
